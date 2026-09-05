@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+
+{% block title %}User Profile - SecureAuth{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-4">
+    <div class="col-lg-8">
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-white py-3 d-flex justify-content-between align-items-center">
+                <h5 class="mb-0 fw-bold"><i class="bi bi-person-badge me-2 text-primary"></i>User Profile</h5>
+                <a href="{% url 'dashboard' %}" class="btn btn-outline-secondary btn-sm">
+                    <i class="bi bi-arrow-left me-1"></i>Back to Dashboard
+                </a>
+            </div>
+            <div class="card-body p-4">
+                
+                <!-- Read-Only Account Metadata -->
+                <div class="row g-3 mb-4 bg-light p-3 rounded">
+                    <div class="col-sm-6">
+                        <small class="text-muted d-block">Username (Immutable identifier):</small>
+                        <strong class="text-dark">{{ user.username }}</strong>
+                    </div>
+                    <div class="col-sm-6">
+                        <small class="text-muted d-block">Account Status:</small>
+                        <span class="badge bg-success-subtle text-success border border-success-subtle">
+                            {% if user.is_active %}Active{% else %}Inactive{% endif %}
+                        </span>
+                    </div>
+                    <div class="col-sm-6">
+                        <small class="text-muted d-block">Account Created:</small>
+                        <span class="text-secondary small">{{ user.date_joined|date:"M d, Y H:i:s" }}</span>
+                    </div>
+                    <div class="col-sm-6">
+                        <small class="text-muted d-block">Last Authentication:</small>
+                        <span class="text-secondary small">{{ user.last_login|date:"M d, Y H:i:s"|default:"Current Session" }}</span>
+                    </div>
+                </div>
+
+                <h6 class="fw-bold mb-3 border-bottom pb-2">Update Profile Details</h6>
+
+                <form method="post" action="{% url 'profile' %}" novalidate>
+                    {% csrf_token %}
+
+                    <div class="mb-3">
+                        <label for="{{ form.full_name.id_for_label }}" class="form-label">Full Name</label>
+                        {{ form.full_name }}
+                        {% if form.full_name.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.full_name.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="{{ form.email.id_for_label }}" class="form-label">Email Address</label>
+                        {{ form.email }}
+                        {% if form.email.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.email.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary px-4 fw-semibold">
+                        <i class="bi bi-save me-1"></i> Save Changes
+                    </button>
+                    <a href="{% url 'change_password' %}" class="btn btn-outline-secondary px-4 ms-2">
+                        <i class="bi bi-key me-1"></i> Change Password
+                    </a>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

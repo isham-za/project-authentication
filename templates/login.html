@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Login - SecureAuth{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-4">
+    <div class="col-md-7 col-lg-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-white py-3 text-center border-bottom">
+                <div class="text-primary fs-3 mb-1"><i class="bi bi-box-arrow-in-right"></i></div>
+                <h4 class="fw-bold mb-0">Sign In</h4>
+                <p class="text-muted small mb-0">Enter your credentials to access your dashboard</p>
+            </div>
+            <div class="card-body p-4">
+                
+                <form method="post" action="{% url 'login' %}" novalidate>
+                    {% csrf_token %}
+                    <input type="hidden" name="next" value="{{ next }}">
+
+                    <div class="mb-3">
+                        <label for="{{ form.username.id_for_label }}" class="form-label">Username</label>
+                        {{ form.username }}
+                        {% if form.username.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.username.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <div class="mb-4">
+                        <label for="{{ form.password.id_for_label }}" class="form-label">Password</label>
+                        {{ form.password }}
+                        {% if form.password.errors %}
+                            <div class="text-danger small mt-1">
+                                {% for error in form.password.errors %}{{ error }}{% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold shadow-sm">
+                        <i class="bi bi-unlock-fill me-1"></i> Authenticate
+                    </button>
+                </form>
+
+                <div class="mt-4 p-3 bg-light rounded small text-muted">
+                    <div class="d-flex align-items-center mb-1">
+                        <i class="bi bi-shield-shaded text-primary me-2"></i>
+                        <span class="fw-semibold">Defense in Depth:</span>
+                    </div>
+                    <span>Rate limiting activates after 5 failed login attempts to thwart brute force attacks.</span>
+                </div>
+            </div>
+            <div class="card-footer bg-light text-center py-3">
+                <span class="text-muted small">Don't have an account?</span>
+                <a href="{% url 'signup' %}" class="small fw-semibold ms-1">Create one here</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

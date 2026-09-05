@@ -1,0 +1,6 @@
+# Core Framework
+Django>=5.0,<6.0
+
+# Environment and Database Configuration
+python-dotenv>=1.0.0
+dj-database-url>=2.1.0

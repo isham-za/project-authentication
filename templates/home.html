@@ -1,0 +1,110 @@
+<!-- {% extends "base.html" %}
+
+{% block title %}SecureAuth - Secure User Authentication System{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center py-4">
+    <div class="col-lg-10">
+        <!-- Hero Card -->
+        <div class="card shadow-sm border-0 mb-4 bg-white">
+            <div class="card-body p-5 text-center">
+                <div class="display-5 text-primary mb-3">
+                    <i class="bi bi-shield-check"></i>
+                </div>
+                <h1 class="display-6 fw-bold mb-2">SecureAuth</h1>
+                <p class="lead text-secondary mb-4">
+                    A secure user authentication system demonstrating modern web application security practices and vulnerability mitigation.
+                </p>
+
+                {% if user.is_authenticated %}
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{% url 'dashboard' %}" class="btn btn-primary btn-lg px-4">
+                            <i class="bi bi-speedometer2 me-2"></i>Go to Dashboard
+                        </a>
+                        <a href="{% url 'profile' %}" class="btn btn-outline-secondary btn-lg px-4">
+                            <i class="bi bi-person-circle me-2"></i>My Profile
+                        </a>
+                    </div>
+                {% else %}
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="{% url 'login' %}" class="btn btn-primary btn-lg px-4 shadow-sm">
+                            <i class="bi bi-box-arrow-in-right me-2"></i>Login
+                        </a>
+                        <a href="{% url 'signup' %}" class="btn btn-outline-primary btn-lg px-4">
+                            <i class="bi bi-person-plus me-2"></i>Create Account
+                        </a>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+        <!-- Security Features Matrix Card -->
+        <div class="card shadow-sm border-0 mb-4">
+            <div class="card-header bg-primary text-white py-3">
+                <h5 class="mb-0 fw-semibold">
+                    <i class="bi bi-shield-lock-fill me-2"></i>Core Security Controls Implemented
+                </h5>
+            </div>
+            <div class="card-body p-4">
+                <div class="row g-4">
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="text-success fs-4 me-3"><i class="bi bi-check-circle-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Strong Password Hashing</h6>
+                                <p class="text-muted small mb-0">NIST-approved PBKDF2 with SHA-256 algorithm and automatic per-user salt. Plaintext passwords are never stored or logged.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="text-success fs-4 me-3"><i class="bi bi-check-circle-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">CSRF Protection</h6>
+                                <p class="text-muted small mb-0">Synchronizer Token Pattern with HttpOnly and SameSite cookie policies defending all state-changing POST requests.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="text-success fs-4 me-3"><i class="bi bi-check-circle-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">XSS Auto-Escaping</h6>
+                                <p class="text-muted small mb-0">Django template engine automatically sanitizes context variables, blocking reflected and stored script execution.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="text-success fs-4 me-3"><i class="bi bi-check-circle-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">SQL Injection Defense</h6>
+                                <p class="text-muted small mb-0">Django ORM uses strict parameter binding and parameterized queries, preventing SQL syntax escaping payloads.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="text-success fs-4 me-3"><i class="bi bi-check-circle-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Brute-Force & Rate Limiting</h6>
+                                <p class="text-muted small mb-0">Monitors consecutive failed attempts per IP/username, applying temporary cooling restrictions to thwart brute force.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="d-flex align-items-start">
+                            <div class="text-success fs-4 me-3"><i class="bi bi-check-circle-fill"></i></div>
+                            <div>
+                                <h6 class="fw-bold mb-1">Secure Session Management</h6>
+                                <p class="text-muted small mb-0">HttpOnly session cookies, SameSite restrictions, session cycling on login to stop fixation, and complete session flushing on logout.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+{% endblock %} -->
